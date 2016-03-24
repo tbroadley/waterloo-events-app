@@ -1,7 +1,13 @@
-import React from "react";
+import React from 'react';
+
+import Calendar from './calendar';
 
 export default class App extends React.Component {
   render() {
-    return <div>Hello world</div>;
+    return (
+      <div>
+        <Calendar events={this.props.events} />
+      </div>
+    );
   }
 }
