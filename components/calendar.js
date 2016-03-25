@@ -39,6 +39,6 @@ class CalendarRow extends React.Component {
 
 class CalendarCell extends React.Component {
   render() {
-    return <div></div>;
+    return <div>Date</div>;
   }
 }

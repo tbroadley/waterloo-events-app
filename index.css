@@ -1,3 +1,8 @@
+html, body, #root, #calendar {
+  height: 100%;
+  margin: 0;
+}
+
 #calendar {
   display: flex;
   flex-flow: column;
@@ -8,4 +13,16 @@
 
   display: flex;
   flex-flow: row;
+}
+
+#calendar > div:first-child {
+  flex: 0 1 auto;
+}
+
+#calendar > div > div {
+  flex: 1 1 auto;
+}
+
+#calendar > div > div > h2 {
+  text-align: center;
 }
