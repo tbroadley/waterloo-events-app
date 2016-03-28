@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './components/app';
 
 ReactDOM.render(
-  <App />,
+  <App selectedDate={new Date('2016-05-28')}/>,
   document.getElementById('root')
 );

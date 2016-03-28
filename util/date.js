@@ -12,7 +12,7 @@ export function weekOfYear(date) {
 // Given a week number and a year, returns the day of the year of the Sunday
 // in that week.
 export function sundayOfWeek(weekOfYear, year) {
-  const sunday = startOfYear(new Date(year, 0, weekOfYear * 7, 0, 0, 0, 0));
+  const sunday = new Date(year, 0, (weekOfYear - 1) * 7, 0, 0, 0, 0);
   sunday.setUTCDate(sunday.getUTCDate() - sunday.getUTCDay());
 
   const start = startOfYear(new Date(year, 0, weekOfYear * 7, 0, 0, 0, 0));
@@ -35,4 +35,29 @@ function startOfYear(date) {
   startOfYear.setUTCMilliseconds(-1);
 
   return startOfYear;
+}
+
+// Given a date, returns the date at the start of the same month.
+export function startOfMonth(date) {
+  const startOfMonth  = new Date(date.getTime());
+  startOfMonth.setUTCDate(1);
+  startOfMonth.setUTCHours(0);
+  startOfMonth.setUTCMinutes(0);
+  startOfMonth.setUTCSeconds(0);
+  startOfMonth.setUTCMilliseconds(0);
+
+  return startOfMonth;
+}
+
+// Given a date, returns the date at the end of the same month.
+export function endOfMonth(date) {
+  const endOfMonth = new Date(date.getTime());
+  endOfMonth.setUTCMonth(endOfMonth.getUTCMonth() + 1);
+  endOfMonth.setUTCDate(-1);
+  endOfMonth.setUTCHours(0);
+  endOfMonth.setUTCMinutes(0);
+  endOfMonth.setUTCSeconds(0);
+  endOfMonth.setUTCMilliseconds(0);
+
+  return endOfMonth;
 }
