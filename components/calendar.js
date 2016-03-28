@@ -66,7 +66,12 @@ class CalendarRow extends React.Component {
               selectedDate.getUTCFullYear(), 0, dayOfYear, 0, 0, 0, 0
             );
 
-            return <CalendarCell date={date}/>;
+            const selected =
+              date.getUTCFullYear() === selectedDate.getUTCFullYear() &&
+              date.getUTCMonth() == selectedDate.getUTCMonth() &&
+              date.getUTCDate() == selectedDate.getUTCDate();
+
+            return <CalendarCell date={date} selected={selected}/>;
           }
         )}
       </div>
@@ -77,9 +82,16 @@ class CalendarRow extends React.Component {
 class CalendarCell extends React.Component {
   render() {
     const {
-      date
+      date,
+      selected
     } = this.props;
 
-    return <div>{date.getUTCDate()}</div>;
+    return (
+      <div
+        className={selected ? 'currentDate' : ''}
+      >
+        {date.getUTCDate()}
+      </div>
+    );
   }
 }

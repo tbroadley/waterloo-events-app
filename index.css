@@ -27,6 +27,10 @@ html, body, #root, #calendar {
   flex: 1 1 auto;
 }
 
+#calendar > div > div.currentDate {
+  border: solid red 5px;
+}
+
 #calendar > div > div > h2 {
   text-align: center;
 }
