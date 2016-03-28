@@ -31,6 +31,10 @@ html, body, #root, #calendar {
   border: solid red 5px;
 }
 
+#calendar > div > div.notInMonth {
+  background-color: #999999;
+}
+
 #calendar > div > div > h2 {
   text-align: center;
 }

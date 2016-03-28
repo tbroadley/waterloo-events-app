@@ -71,7 +71,15 @@ class CalendarRow extends React.Component {
               date.getUTCMonth() == selectedDate.getUTCMonth() &&
               date.getUTCDate() == selectedDate.getUTCDate();
 
-            return <CalendarCell date={date} selected={selected}/>;
+            const inMonth = date.getUTCMonth() === selectedDate.getUTCMonth();
+
+            return (
+              <CalendarCell
+                date={date}
+                selected={selected}
+                inMonth={inMonth}
+              />
+            );
           }
         )}
       </div>
@@ -83,12 +91,17 @@ class CalendarCell extends React.Component {
   render() {
     const {
       date,
-      selected
+      selected,
+      inMonth
     } = this.props;
+
+    const className =
+      (selected ? 'currentDate' : '') +
+      (inMonth ? '' : 'notInMonth');
 
     return (
       <div
-        className={selected ? 'currentDate' : ''}
+        className={className}
       >
         {date.getUTCDate()}
       </div>
