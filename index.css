@@ -8,6 +8,10 @@ html, body, #root, #calendar {
   flex-flow: column;
 }
 
+#calendar > h1 {
+  text-align: center;
+}
+
 #calendar > div {
   flex: 1 1 auto;
 
@@ -15,7 +19,7 @@ html, body, #root, #calendar {
   flex-flow: row;
 }
 
-#calendar > div:first-child {
+#calendar > div:nth-child(2) {
   flex: 0 1 auto;
 }
 
