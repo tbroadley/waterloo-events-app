@@ -53,7 +53,7 @@ export function startOfMonth(date) {
 export function endOfMonth(date) {
   const endOfMonth = new Date(date.getTime());
   endOfMonth.setUTCMonth(endOfMonth.getUTCMonth() + 1);
-  endOfMonth.setUTCDate(-1);
+  endOfMonth.setUTCDate(0);
   endOfMonth.setUTCHours(0);
   endOfMonth.setUTCMinutes(0);
   endOfMonth.setUTCSeconds(0);
