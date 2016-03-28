@@ -5,7 +5,8 @@ import {
   weekOfYear,
   sundayOfWeek,
   startOfMonth,
-  endOfMonth
+  endOfMonth,
+  monthNames
 } from '../util/date';
 
 export default class Calendar extends React.Component {
@@ -19,6 +20,11 @@ export default class Calendar extends React.Component {
 
     return (
       <div id="calendar">
+        <h1>
+          Waterloo Events for&nbsp;
+          {monthNames[selectedDate.getUTCMonth()]}&nbsp;
+          {selectedDate.getUTCFullYear()}
+        </h1>
         <CalendarHeader />
         {range(startWeek, endWeek + 1).map(
           week => <CalendarRow
@@ -34,7 +40,7 @@ export default class Calendar extends React.Component {
 class CalendarHeader extends React.Component {
   render() {
     return (
-      <div>
+      <div id="calendar-header">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
           day => (<div><h2>{day}</h2></div>)
         )}
