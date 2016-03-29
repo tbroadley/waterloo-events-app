@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import {
   changeSelectedEvent
@@ -13,7 +14,7 @@ import {
   monthNames
 } from '../util/date';
 
-export default class Calendar extends React.Component {
+class Calendar extends React.Component {
   render() {
     const {
       events,
@@ -156,3 +157,18 @@ class Event extends React.Component {
     )
   }
 }
+
+export default connect(
+  obj => {
+    const selectedEvent = obj.events.find(elt => elt.id === obj.selectedEvent);
+    const selectedDate = selectedEvent === undefined ?
+                         new Date() :
+                         new Date(selectedEvent.date);
+
+    return {
+      selectedEvent,
+      selectedDate,
+      events: obj.events,
+    };
+  }
+)(Calendar);
