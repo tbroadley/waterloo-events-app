@@ -1,5 +1,9 @@
 import React from 'react';
 
+import {
+  changeSelectedEvent
+} from '../actions/main';
+
 import range from '../util/range';
 import {
   weekOfYear,
@@ -15,10 +19,13 @@ export default class Calendar extends React.Component {
       events,
       selectedDate,
       selectedEvent,
+      dispatch,
     } = this.props;
 
     const startWeek = weekOfYear(startOfMonth(selectedDate));
     const endWeek = weekOfYear(endOfMonth(selectedDate));
+
+    const onSelect = id => _ => { dispatch(changeSelectedEvent(id)) };
 
     return (
       <div id="calendar">
@@ -36,6 +43,7 @@ export default class Calendar extends React.Component {
                       elt => weekOfYear(elt.date) === week
                     )}
                     selectedEvent={selectedEvent}
+                    onSelect={onSelect}
                   />
         )}
       </div>
@@ -62,6 +70,7 @@ class CalendarRow extends React.Component {
       selectedDate,
       events,
       selectedEvent,
+      onSelect,
     } = this.props;
 
     const sunday = sundayOfWeek(week, selectedDate.getUTCFullYear());
@@ -87,6 +96,7 @@ class CalendarRow extends React.Component {
                     elt.date.getUTCDate() == date.getUTCDate()
                 )}
                 selectedEvent={selectedEvent}
+                onSelect={onSelect}
               />
             );
           }
@@ -103,6 +113,7 @@ class CalendarCell extends React.Component {
       inMonth,
       events,
       selectedEvent,
+      onSelect,
     } = this.props;
 
     const className =
@@ -118,6 +129,7 @@ class CalendarCell extends React.Component {
                    name={elt.name}
                    id={elt.id}
                    selected={elt.id === selectedEvent.id}
+                   onSelect={onSelect(elt.id)}
                  />
         )}
       </div>
@@ -131,11 +143,13 @@ class Event extends React.Component {
       name,
       id,
       selected,
+      onSelect,
     } = this.props;
 
     return (
       <div
         className={selected ? 'selected' : ''}
+        onClick={onSelect}
       >
         {name}
       </div>

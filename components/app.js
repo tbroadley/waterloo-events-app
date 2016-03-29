@@ -8,6 +8,7 @@ class App extends React.Component {
     const {
       events,
       selectedEvent,
+      dispatch,
     } = this.props;
 
     let selectedDate;
@@ -23,6 +24,7 @@ class App extends React.Component {
         selectedDate={selectedDate}
         events={events}
         selectedEvent={selectedEvent}
+        dispatch={dispatch}
       />
     );
   }
