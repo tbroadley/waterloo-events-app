@@ -19,7 +19,11 @@ class App extends React.Component {
     }
 
     return (
-      <Calendar selectedDate={selectedDate} />
+      <Calendar
+        selectedDate={selectedDate}
+        events={events}
+        selectedEvent={selectedEvent}
+      />
     );
   }
 }

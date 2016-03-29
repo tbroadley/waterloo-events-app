@@ -12,7 +12,9 @@ import {
 export default class Calendar extends React.Component {
   render() {
     const {
-      selectedDate
+      events,
+      selectedDate,
+      selectedEvent,
     } = this.props;
 
     const startWeek = weekOfYear(startOfMonth(selectedDate));
@@ -30,6 +32,10 @@ export default class Calendar extends React.Component {
           week => <CalendarRow
                     week={week}
                     selectedDate={selectedDate}
+                    events={events.filter(
+                      elt => weekOfYear(elt.date) === week
+                    )}
+                    selectedEvent={selectedEvent}
                   />
         )}
       </div>
@@ -53,7 +59,9 @@ class CalendarRow extends React.Component {
   render() {
     const {
       week,
-      selectedDate
+      selectedDate,
+      events,
+      selectedEvent,
     } = this.props;
 
     const sunday = sundayOfWeek(week, selectedDate.getUTCFullYear());
@@ -78,6 +86,12 @@ class CalendarRow extends React.Component {
                 date={date}
                 selected={selected}
                 inMonth={inMonth}
+                events={events.filter(
+                  elt =>
+                    elt.date.getUTCFullYear() === date.getUTCFullYear() &&
+                    elt.date.getUTCMonth() == date.getUTCMonth() &&
+                    elt.date.getUTCDate() == date.getUTCDate()
+                )}
               />
             );
           }
@@ -92,7 +106,8 @@ class CalendarCell extends React.Component {
     const {
       date,
       selected,
-      inMonth
+      inMonth,
+      events,
     } = this.props;
 
     const className =
@@ -103,7 +118,10 @@ class CalendarCell extends React.Component {
       <div
         className={className}
       >
-        {date.getUTCDate()}
+        <div>{date.getUTCDate()}</div>
+        {events.map(
+          elt => <div>{elt.name}</div>
+        )}
       </div>
     );
   }
