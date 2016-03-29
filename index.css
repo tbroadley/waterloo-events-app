@@ -27,14 +27,14 @@ html, body, #root, #calendar {
   flex: 1 1 auto;
 }
 
-#calendar > div > div.currentDate {
-  border: solid red 5px;
-}
-
 #calendar > div > div.notInMonth {
   background-color: #999999;
 }
 
 #calendar > div > div > h2 {
   text-align: center;
+}
+
+#calendar > div > div > div.selected {
+  background: #ff8888;
 }

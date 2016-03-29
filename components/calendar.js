@@ -74,17 +74,11 @@ class CalendarRow extends React.Component {
               selectedDate.getUTCFullYear(), 0, dayOfYear, 0, 0, 0, 0
             );
 
-            const selected =
-              date.getUTCFullYear() === selectedDate.getUTCFullYear() &&
-              date.getUTCMonth() == selectedDate.getUTCMonth() &&
-              date.getUTCDate() == selectedDate.getUTCDate();
-
             const inMonth = date.getUTCMonth() === selectedDate.getUTCMonth();
 
             return (
               <CalendarCell
                 date={date}
-                selected={selected}
                 inMonth={inMonth}
                 events={events.filter(
                   elt =>
@@ -92,6 +86,7 @@ class CalendarRow extends React.Component {
                     elt.date.getUTCMonth() == date.getUTCMonth() &&
                     elt.date.getUTCDate() == date.getUTCDate()
                 )}
+                selectedEvent={selectedEvent}
               />
             );
           }
@@ -105,13 +100,12 @@ class CalendarCell extends React.Component {
   render() {
     const {
       date,
-      selected,
       inMonth,
       events,
+      selectedEvent,
     } = this.props;
 
     const className =
-      (selected ? 'currentDate' : '') +
       (inMonth ? '' : 'notInMonth');
 
     return (
@@ -120,9 +114,31 @@ class CalendarCell extends React.Component {
       >
         <div>{date.getUTCDate()}</div>
         {events.map(
-          elt => <div>{elt.name}</div>
+          elt => <Event
+                   name={elt.name}
+                   id={elt.id}
+                   selected={elt.id === selectedEvent.id}
+                 />
         )}
       </div>
     );
+  }
+}
+
+class Event extends React.Component {
+  render() {
+    const {
+      name,
+      id,
+      selected,
+    } = this.props;
+
+    return (
+      <div
+        className={selected ? 'selected' : ''}
+      >
+        {name}
+      </div>
+    )
   }
 }
