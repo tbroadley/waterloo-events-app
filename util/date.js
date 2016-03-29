@@ -1,12 +1,12 @@
 // Given a Date object, return the week of the year that the date is in.
 export function weekOfYear(date) {
-  const start = startOfYear(date);
+  const startDate = sundayOfWeek(1, date.getUTCFullYear());
+  const start = new Date(date.getUTCFullYear(), 0, startDate, 0, 0, 0, 0);
 
   const diff = date - start;
   const oneWeek = 1000 * 60 * 60 * 24 * 7;
 
-  return Math.ceil(diff / oneWeek) +
-    (date.getUTCDay() < start.getUTCDay() ? 1 : 0);
+  return Math.ceil(diff / oneWeek) + (date.getUTCDay() === 0 ? 1 : 0);
 }
 
 // Given a week number and a year, returns the day of the year of the Sunday
