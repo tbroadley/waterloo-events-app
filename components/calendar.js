@@ -45,6 +45,7 @@ class Calendar extends React.Component {
                     )}
                     selectedEvent={selectedEvent}
                     onSelect={onSelect}
+                    onDeselect={onSelect(-1)}
                   />
         )}
       </div>
@@ -72,6 +73,7 @@ class CalendarRow extends React.Component {
       events,
       selectedEvent,
       onSelect,
+      onDeselect,
     } = this.props;
 
     const sunday = sundayOfWeek(week, selectedDate.getUTCFullYear());
@@ -98,6 +100,7 @@ class CalendarRow extends React.Component {
                 )}
                 selectedEvent={selectedEvent}
                 onSelect={onSelect}
+                onDeselect={onDeselect}
               />
             );
           }
@@ -115,6 +118,7 @@ class CalendarCell extends React.Component {
       events,
       selectedEvent,
       onSelect,
+      onDeselect,
     } = this.props;
 
     const className =
@@ -133,6 +137,7 @@ class CalendarCell extends React.Component {
                      selectedEvent !== undefined && elt.id === selectedEvent.id
                    }
                    onSelect={onSelect(elt.id)}
+                   onDeselect={onDeselect}
                  />
         )}
       </div>
@@ -147,12 +152,21 @@ class Event extends React.Component {
       id,
       selected,
       onSelect,
+      onDeselect
     } = this.props;
+
+    function onClick() {
+      if (selected) {
+        onDeselect();
+      } else {
+        onSelect();
+      }
+    }
 
     return (
       <div
         className={selected ? 'selected' : ''}
-        onClick={onSelect}
+        onClick={onClick}
       >
         {name}
       </div>
