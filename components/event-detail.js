@@ -10,7 +10,7 @@ class EventDetail extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <div id='event-detail'>
         <div>{name}</div>
         <div>{date.toString()}</div>
       </div>

@@ -6,7 +6,7 @@ import EventDetail from './event-detail';
 export default class App extends React.Component {
   render() {
     return (
-      <div>
+      <div id='app'>
         <Calendar />
         <EventDetail />
       </div>

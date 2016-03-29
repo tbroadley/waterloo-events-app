@@ -1,6 +1,15 @@
-html, body, #root, #calendar {
+html, body, #root, #app, #calendar, #event-detail {
   height: 100%;
   margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-flow: row;
+}
+
+#calendar, #event-detail {
+  flex: 1 1 auto;
 }
 
 #calendar {
