@@ -23,7 +23,7 @@ export default function main(state = {}, action) {
             date: new Date('2016-04-05'),
           }
         ],
-        selectedEvent: 0,
+        selectedEvent: -1,
       };
   }
 }

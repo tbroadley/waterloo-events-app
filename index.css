@@ -9,7 +9,13 @@ html, body, #root, #app, #calendar, #event-detail {
 }
 
 #calendar, #event-detail {
+  width: 50%;
+
   flex: 1 1 auto;
+}
+
+#event-detail.hidden {
+  display: none;
 }
 
 #calendar {
