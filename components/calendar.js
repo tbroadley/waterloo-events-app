@@ -129,7 +129,9 @@ class CalendarCell extends React.Component {
           elt => <Event
                    name={elt.name}
                    id={elt.id}
-                   selected={elt.id === selectedEvent.id}
+                   selected={
+                     selectedEvent !== undefined && elt.id === selectedEvent.id
+                   }
                    onSelect={onSelect(elt.id)}
                  />
         )}
