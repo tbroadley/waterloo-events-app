@@ -24,6 +24,8 @@ html, body, #root, #calendar {
 }
 
 #calendar > div > div {
+  width: 14%;
+
   flex: 1 1 auto;
 }
 
