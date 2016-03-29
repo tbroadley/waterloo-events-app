@@ -10,9 +10,13 @@ class App extends React.Component {
       selectedEvent,
     } = this.props;
 
-    const selectedDate = new Date(
-      events.find(elt => elt.id === selectedEvent).date
-    );
+    let selectedDate;
+
+    if (selectedEvent === undefined) {
+      selectedDate = new Date();
+    } else {
+      selectedDate = new Date(selectedEvent.date);
+    }
 
     return (
       <Calendar selectedDate={selectedDate} />
@@ -21,4 +25,9 @@ class App extends React.Component {
 }
 
 // TODO: do not connect at the top level, if possible.
-export default connect(obj => obj)(App);
+export default connect(
+  obj => ({
+    selectedEvent: obj.events.find(elt => elt.id === obj.selectedEvent),
+    events: obj.events,
+  })
+)(App);
