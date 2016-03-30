@@ -15,6 +15,7 @@ class EventDetail extends React.Component {
         name,
         startTime,
         endTime,
+        location,
         description,
       } = this.props.selectedEvent;
 
@@ -31,6 +32,15 @@ class EventDetail extends React.Component {
           <div>{startTime.toLocaleDateString()}</div>
           <div>Start: {startTime.toLocaleTimeString()}</div>
           <div>End: {endTime.toLocaleTimeString()}</div>
+          <div>
+            Location:&nbsp;
+            <a
+              target='_blank'
+              href={'https://www.google.ca/maps/search/' + location}
+            >
+              {location}
+            </a>
+          </div>
           <div>Description: {description}</div>
         </div>
       );
