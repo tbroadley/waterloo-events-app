@@ -13,7 +13,8 @@ class EventDetail extends React.Component {
       const {
         id,
         name,
-        date,
+        startTime,
+        endTime,
       } = this.props.selectedEvent;
 
       const onDeselect = _ => this.props.dispatch(changeSelectedEvent(-1));
@@ -26,7 +27,9 @@ class EventDetail extends React.Component {
             Close
           </button>
           <div>{name}</div>
-          <div>{date.toString()}</div>
+          <div>{startTime.toLocaleDateString()}</div>
+          <div>Start: {startTime.toLocaleTimeString()}</div>
+          <div>End: {endTime.toLocaleTimeString()}</div>
         </div>
       );
     }

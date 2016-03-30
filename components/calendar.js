@@ -41,7 +41,7 @@ class Calendar extends React.Component {
                     week={week}
                     selectedDate={selectedDate}
                     events={events.filter(
-                      elt => weekOfYear(elt.date) === week
+                      elt => weekOfYear(elt.startTime) === week
                     )}
                     selectedEvent={selectedEvent}
                     onSelect={onSelect}
@@ -94,9 +94,9 @@ class CalendarRow extends React.Component {
                 inMonth={inMonth}
                 events={events.filter(
                   elt =>
-                    elt.date.getUTCFullYear() === date.getUTCFullYear() &&
-                    elt.date.getUTCMonth() == date.getUTCMonth() &&
-                    elt.date.getUTCDate() == date.getUTCDate()
+                    elt.startTime.getUTCFullYear() === date.getUTCFullYear() &&
+                    elt.startTime.getUTCMonth() == date.getUTCMonth() &&
+                    elt.startTime.getUTCDate() == date.getUTCDate()
                 )}
                 selectedEvent={selectedEvent}
                 onSelect={onSelect}
@@ -179,7 +179,7 @@ export default connect(
     const selectedEvent = obj.events.find(elt => elt.id === obj.selectedEvent);
     const selectedDate = selectedEvent === undefined ?
                          new Date() :
-                         new Date(selectedEvent.date);
+                         new Date(selectedEvent.startTime);
 
     return {
       selectedEvent,

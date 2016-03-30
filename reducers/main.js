@@ -15,12 +15,14 @@ export default function main(state = {}, action) {
           {
             id: 0,
             name: 'Test Event',
-            date: new Date('2016-03-28'),
+            startTime: new Date('2016-03-28 3:00 PM EST'),
+            endTime: new Date('2016-03-28 5:00 PM EST'),
           },
           {
             id: 1,
             name: 'Test Event 2',
-            date: new Date('2016-03-05'),
+            startTime: new Date('2016-03-05 9:00 AM EST'),
+            endTime: new Date('2016-03-05 11:00 AM EST'),
           }
         ],
         selectedEvent: -1,
