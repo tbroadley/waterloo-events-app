@@ -121,7 +121,13 @@ class CalendarCell extends React.Component {
       onDeselect,
     } = this.props;
 
+    const todayDate = new Date();
+    const today = date.getUTCFullYear() === todayDate.getUTCFullYear() &&
+                  date.getUTCMonth() === todayDate.getUTCMonth() &&
+                  date.getUTCDate() === todayDate.getUTCDate();
+
     const className =
+      (today ? 'today ' : '') +
       (inMonth ? '' : 'notInMonth');
 
     return (

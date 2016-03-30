@@ -42,6 +42,12 @@ html, body, #root, #app, #calendar, #event-detail {
   width: 14%;
 
   flex: 1 1 auto;
+
+  box-sizing: border-box;
+}
+
+#calendar > div > div.today {
+  border: 5px red solid;
 }
 
 #calendar > div > div.notInMonth {
