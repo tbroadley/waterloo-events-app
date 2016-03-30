@@ -23,6 +23,12 @@ html, body, #root, #app, #calendar-parent, #calendar, #event-detail {
   flex-flow: row;
 }
 
+#calendar-parent > div:nth-child(1), #calendar-parent > div:nth-child(3) {
+  display: flex;
+
+  align-items: center;
+}
+
 #calendar {
   flex: 1 1 auto;
 
