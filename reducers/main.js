@@ -15,8 +15,8 @@ export default function main(state = {}, action) {
           {
             id: 0,
             name: 'Test Event',
-            startTime: new Date('2016-03-28 3:00 PM EST'),
-            endTime: new Date('2016-03-28 5:00 PM EST'),
+            startTime: new Date('2016-03-05 3:00 PM EST'),
+            endTime: new Date('2016-03-05 5:00 PM EST'),
             location: 'Student Life Centre (SLC)',
             description: 'A cool event. Come check it out.',
             links: [

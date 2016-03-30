@@ -135,7 +135,9 @@ class CalendarCell extends React.Component {
         className={className}
       >
         <div>{date.getUTCDate()}</div>
-        {events.map(
+        {events.sort(
+          (a, b) => a.startTime - b.startTime
+        ).map(
           elt => <Event
                    name={elt.name}
                    id={elt.id}
