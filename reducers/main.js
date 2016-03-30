@@ -37,6 +37,7 @@ export default function main(state = {}, action) {
             endTime: new Date('2016-03-05 11:00 AM EST'),
             location: 'Physical Activites Complex (PAC)',
             description: 'This event is cooler than the other test event!',
+            links: [],
           }
         ],
         selectedEvent: -1,
