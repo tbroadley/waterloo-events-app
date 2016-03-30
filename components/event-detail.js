@@ -17,6 +17,7 @@ class EventDetail extends React.Component {
         endTime,
         location,
         description,
+        links,
       } = this.props.selectedEvent;
 
       const onDeselect = _ => this.props.dispatch(changeSelectedEvent(-1));
@@ -42,6 +43,9 @@ class EventDetail extends React.Component {
             </a>
           </div>
           <div>Description: {description}</div>
+          <ul>
+            {links.map(link => <li><a href={link.url}>{link.name}</a></li>)}
+          </ul>
         </div>
       );
     }

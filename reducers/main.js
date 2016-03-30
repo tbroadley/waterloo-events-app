@@ -19,6 +19,16 @@ export default function main(state = {}, action) {
             endTime: new Date('2016-03-28 5:00 PM EST'),
             location: 'Student Life Centre (SLC)',
             description: 'A cool event. Come check it out.',
+            links: [
+              {
+                name: 'Google',
+                url: 'https://www.google.ca',
+              },
+              {
+                name: 'Facebook',
+                url: 'https://www.facebook.com',
+              },
+            ]
           },
           {
             id: 1,
