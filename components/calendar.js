@@ -139,6 +139,8 @@ class CalendarCell extends React.Component {
           elt => <Event
                    name={elt.name}
                    id={elt.id}
+                   startTime={elt.startTime}
+                   endTime={elt.endTime}
                    selected={
                      selectedEvent !== undefined && elt.id === selectedEvent.id
                    }
@@ -156,6 +158,8 @@ class Event extends React.Component {
     const {
       name,
       id,
+      startTime,
+      endTime,
       selected,
       onSelect,
       onDeselect
@@ -174,7 +178,12 @@ class Event extends React.Component {
         className={selected ? 'selected' : ''}
         onClick={onClick}
       >
-        {name}
+        <div>{name}</div>
+        <div>
+          {startTime.toLocaleTimeString()}&nbsp;
+          &ndash;&nbsp;
+          {endTime.toLocaleTimeString()}
+        </div>
       </div>
     )
   }
