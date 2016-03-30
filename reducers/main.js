@@ -18,12 +18,12 @@ export default function main(state = {}, action) {
     case INCREMENT_MONTH:
       return Object.assign({}, state, {
         selectedYear: selectedYear + (selectedMonth === 11 ? 1 : 0),
-        selectedMonth: (selectedMonth === 11 ? selectedMonth + 1 : 0),
+        selectedMonth: (selectedMonth === 11 ? 0 : selectedMonth + 1),
       });
     case DECREMENT_MONTH:
       return Object.assign({}, state, {
         selectedYear: selectedYear - (selectedMonth === 0 ? 1 : 0),
-        selectedMonth: (selectedMonth === 0 ? selectedMonth - 1 : 11),
+        selectedMonth: (selectedMonth === 0 ? 11 : selectedMonth - 1),
       });
     default:
       const today = new Date();
