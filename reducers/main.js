@@ -1,14 +1,30 @@
 import {
   CHANGE_SELECTED_EVENT,
+  INCREMENT_MONTH,
+  DECREMENT_MONTH,
 } from '../actions/main';
 
 export default function main(state = {}, action) {
+  const {
+    selectedYear,
+    selectedMonth,
+  } = state;
+
   switch (action.type) {
     case CHANGE_SELECTED_EVENT:
-      return {
-        events: state.events,
+      return Object.assign({}, state, {
         selectedEvent: action.id,
-      };
+      });
+    case INCREMENT_MONTH:
+      return Object.assign({}, state, {
+        selectedYear: selectedYear + (selectedMonth === 11 ? 1 : 0),
+        selectedMonth: (selectedMonth === 11 ? selectedMonth + 1 : 0),
+      });
+    case DECREMENT_MONTH:
+      return Object.assign({}, state, {
+        selectedYear: selectedYear - (selectedMonth === 0 ? 1 : 0),
+        selectedMonth: (selectedMonth === 0 ? selectedMonth - 1 : 11),
+      });
     default:
       const today = new Date();
 
