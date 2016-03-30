@@ -28,6 +28,8 @@ html, body, #root, #app, #calendar, #event-detail {
 }
 
 #calendar > div {
+  height: 15%;
+
   flex: 1 1 auto;
 
   display: flex;
@@ -35,6 +37,8 @@ html, body, #root, #app, #calendar, #event-detail {
 }
 
 #calendar > div:nth-child(2) {
+  height: auto;
+
   flex: 0 1 auto;
 }
 
