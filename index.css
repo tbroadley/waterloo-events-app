@@ -1,4 +1,4 @@
-html, body, #root, #app, #calendar, #event-detail {
+html, body, #root, #app, #calendar-parent, #calendar, #event-detail {
   height: 100%;
   margin: 0;
 }
@@ -8,7 +8,7 @@ html, body, #root, #app, #calendar, #event-detail {
   flex-flow: row;
 }
 
-#calendar, #event-detail {
+#calendar-parent, #event-detail {
   width: 50%;
 
   flex: 1 1 auto;
@@ -18,7 +18,14 @@ html, body, #root, #app, #calendar, #event-detail {
   display: none;
 }
 
+#calendar-parent {
+  display: flex;
+  flex-flow: row;
+}
+
 #calendar {
+  flex: 1 1 auto;
+
   display: flex;
   flex-flow: column;
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
-  changeSelectedEvent
+  changeSelectedEvent,
+  incrementMonth,
+  decrementMonth,
 } from '../actions/main';
 
 import range from '../util/range';
@@ -29,28 +31,38 @@ class Calendar extends React.Component {
     const startWeek = weekOfYear(startOfMonth(thisMonth));
     const endWeek = weekOfYear(endOfMonth(thisMonth));
 
-    const onSelect = id => _ => { dispatch(changeSelectedEvent(id)) };
+    const onSelect = id => _ => { dispatch(changeSelectedEvent(id)); };
+    const incMonth = _ => { dispatch(incrementMonth()); };
+    const decMonth = _ => { dispatch(decrementMonth()); };
 
     return (
-      <div id="calendar">
-        <h1>
-          Waterloo Events for&nbsp;
-          {monthNames[thisMonth.getUTCMonth()]}&nbsp;
-          {thisMonth.getUTCFullYear()}
-        </h1>
-        <CalendarHeader />
-        {range(startWeek, endWeek + 1).map(
-          week => <CalendarRow
-                    week={week}
-                    selectedDate={thisMonth}
-                    events={events.filter(
-                      elt => weekOfYear(elt.startTime) === week
-                    )}
-                    selectedEvent={selectedEvent}
-                    onSelect={onSelect}
-                    onDeselect={onSelect(-1)}
-                  />
-        )}
+      <div id="calendar-parent">
+        <div>
+          <button onClick={decMonth}>Previous month</button>
+        </div>
+        <div id="calendar">
+          <h1>
+            Waterloo Events for&nbsp;
+            {monthNames[thisMonth.getUTCMonth()]}&nbsp;
+            {thisMonth.getUTCFullYear()}
+          </h1>
+          <CalendarHeader />
+          {range(startWeek, endWeek + 1).map(
+            week => <CalendarRow
+                      week={week}
+                      selectedDate={thisMonth}
+                      events={events.filter(
+                        elt => weekOfYear(elt.startTime) === week
+                      )}
+                      selectedEvent={selectedEvent}
+                      onSelect={onSelect}
+                      onDeselect={onSelect(-1)}
+                    />
+          )}
+        </div>
+        <div>
+          <button onClick={incMonth}>Next month</button>
+        </div>
       </div>
     );
   }
