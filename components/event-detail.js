@@ -43,9 +43,11 @@ class EventDetail extends React.Component {
             </a>
           </div>
           <div>Description: {description}</div>
-          <ul>
-            {links.map(link => <li><a href={link.url}>{link.name}</a></li>)}
-          </ul>
+          {links === undefined ? '' :
+            <ul>
+              {links.map(link => <li><a href={link.url}>{link.name}</a></li>)}
+            </ul>
+          }
         </div>
       );
     }
