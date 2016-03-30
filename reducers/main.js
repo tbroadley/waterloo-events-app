@@ -10,6 +10,8 @@ export default function main(state = {}, action) {
         selectedEvent: action.id,
       };
     default:
+      const today = new Date();
+
       return {
         events: [
           {
@@ -40,6 +42,8 @@ export default function main(state = {}, action) {
           }
         ],
         selectedEvent: -1,
+        selectedYear: today.getFullYear(),
+        selectedMonth: today.getMonth(),
       };
   }
 }

@@ -18,13 +18,16 @@ class Calendar extends React.Component {
   render() {
     const {
       events,
-      selectedDate,
+      selectedYear,
+      selectedMonth,
       selectedEvent,
       dispatch,
     } = this.props;
 
-    const startWeek = weekOfYear(startOfMonth(selectedDate));
-    const endWeek = weekOfYear(endOfMonth(selectedDate));
+    const thisMonth = new Date(selectedYear, selectedMonth, 2, 0, 0, 0, 0);
+
+    const startWeek = weekOfYear(startOfMonth(thisMonth));
+    const endWeek = weekOfYear(endOfMonth(thisMonth));
 
     const onSelect = id => _ => { dispatch(changeSelectedEvent(id)) };
 
@@ -32,14 +35,14 @@ class Calendar extends React.Component {
       <div id="calendar">
         <h1>
           Waterloo Events for&nbsp;
-          {monthNames[selectedDate.getUTCMonth()]}&nbsp;
-          {selectedDate.getUTCFullYear()}
+          {monthNames[thisMonth.getUTCMonth()]}&nbsp;
+          {thisMonth.getUTCFullYear()}
         </h1>
         <CalendarHeader />
         {range(startWeek, endWeek + 1).map(
           week => <CalendarRow
                     week={week}
-                    selectedDate={selectedDate}
+                    selectedDate={thisMonth}
                     events={events.filter(
                       elt => weekOfYear(elt.startTime) === week
                     )}
@@ -194,13 +197,11 @@ class Event extends React.Component {
 export default connect(
   obj => {
     const selectedEvent = obj.events.find(elt => elt.id === obj.selectedEvent);
-    const selectedDate = selectedEvent === undefined ?
-                         new Date() :
-                         new Date(selectedEvent.startTime);
 
     return {
       selectedEvent,
-      selectedDate,
+      selectedYear: obj.selectedYear,
+      selectedMonth: obj.selectedMonth,
       events: obj.events,
     };
   }
