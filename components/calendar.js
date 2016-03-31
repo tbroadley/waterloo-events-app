@@ -200,7 +200,7 @@ class Event extends React.Component {
           {startTime === undefined ? '' :
             startTime.toLocaleTimeString()
           }
-          {endTime === undefined ? '' :
+          {startTime === undefined || endTime === undefined ? '' :
             <span>&nbsp;&ndash;&nbsp;</span>
           }
           {endTime === undefined ? '' :
