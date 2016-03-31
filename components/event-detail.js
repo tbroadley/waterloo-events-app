@@ -18,6 +18,7 @@ class EventDetail extends React.Component {
         location,
         description,
         links,
+        image,
       } = this.props.selectedEvent;
 
       const onDeselect = _ => this.props.dispatch(changeSelectedEvent(-1));
@@ -30,6 +31,11 @@ class EventDetail extends React.Component {
             Close
           </button>
           <div><h1>{name}</h1></div>
+          {
+            image !== undefined ?
+            <img src={'https://raw.githubusercontent.com/tbroadley/waterloo-events-list/master/posters/' + image} /> :
+            ''
+          }
           <div>{startTime.toLocaleDateString()}</div>
           <div>Start: {startTime.toLocaleTimeString()}</div>
           <div>End: {endTime.toLocaleTimeString()}</div>
