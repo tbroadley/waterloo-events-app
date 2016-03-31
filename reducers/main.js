@@ -22,8 +22,12 @@ export default function main(state = {}, action) {
         isFetching: false,
         events: action.events.map(
           event => Object.assign({}, event, {
-            startTime: new Date(event.startTime),
-            endTime: new Date(event.endTime),
+            startTime: event.startTime === undefined ?
+                       undefined
+                       : new Date(event.startTime),
+            endTime: event.endTime === undefined ?
+                     undefined :
+                     new Date(event.endTime),
           })
         ),
       });
