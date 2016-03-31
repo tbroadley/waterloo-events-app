@@ -38,17 +38,29 @@ class EventDetail extends React.Component {
           }
           <div>{startTime.toLocaleDateString()}</div>
           <div>Start: {startTime.toLocaleTimeString()}</div>
-          <div>End: {endTime.toLocaleTimeString()}</div>
-          <div>
-            Location:&nbsp;
-            <a
-              target='_blank'
-              href={'https://www.google.ca/maps/search/' + location}
-            >
-              {location}
-            </a>
-          </div>
-          <div>Description: {description}</div>
+          {
+            endTime !== undefined ?
+            <div>End: {endTime.toLocaleTimeString()}</div> :
+            ''
+          }
+          {
+            location !== undefined ?
+            <div>
+              Location:&nbsp;
+              <a
+                target='_blank'
+                href={'https://www.google.ca/maps/search/' + location}
+              >
+                {location}
+              </a>
+            </div> :
+            ''
+          }
+          {
+            description !== undefined ?
+            <div>Description: {description}</div> :
+            ''
+          }
           {links === undefined ? '' :
             <ul>
               {links.map(link => <li><a href={link.url}>{link.name}</a></li>)}
