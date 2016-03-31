@@ -6,7 +6,7 @@ export function weekOfYear(date) {
   const diff = date - start;
   const oneWeek = 1000 * 60 * 60 * 24 * 7;
 
-  return Math.ceil(diff / oneWeek) + (date.getUTCDay() === 0 ? 1 : 0);
+  return Math.ceil(diff / oneWeek);
 }
 
 // Given a week number and a year, returns the day of the year of the Sunday
