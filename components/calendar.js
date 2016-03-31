@@ -197,9 +197,15 @@ class Event extends React.Component {
       >
         <div>{name}</div>
         <div>
-          {startTime.toLocaleTimeString()}&nbsp;
-          &ndash;&nbsp;
-          {endTime.toLocaleTimeString()}
+          {startTime === undefined ? '' :
+            startTime.toLocaleTimeString()
+          }
+          {endTime === undefined ? '' :
+            <span>&nbsp;&ndash;&nbsp;</span>
+          }
+          {endTime === undefined ? '' :
+            endTime.toLocaleTimeString()
+          }
         </div>
       </div>
     )
