@@ -2,6 +2,8 @@ import {
   CHANGE_SELECTED_EVENT,
   INCREMENT_MONTH,
   DECREMENT_MONTH,
+  REQUEST_EVENTS,
+  RECEIVE_EVENTS,
 } from '../actions/main';
 
 export default function main(state = {}, action) {
@@ -11,6 +13,20 @@ export default function main(state = {}, action) {
   } = state;
 
   switch (action.type) {
+    case REQUEST_EVENTS:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case RECEIVE_EVENTS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        events: action.events.map(
+          event => Object.assign({}, event, {
+            startTime: new Date(event.startTime),
+            endTime: new Date(event.endTime),
+          })
+        ),
+      });
     case CHANGE_SELECTED_EVENT:
       return Object.assign({}, state, {
         selectedEvent: action.id,
@@ -29,34 +45,8 @@ export default function main(state = {}, action) {
       const today = new Date();
 
       return {
-        events: [
-          {
-            id: 0,
-            name: 'Test Event',
-            startTime: new Date('2016-03-05 3:00 PM EST'),
-            endTime: new Date('2016-03-05 5:00 PM EST'),
-            location: 'Student Life Centre (SLC)',
-            description: 'A cool event. Come check it out.',
-            links: [
-              {
-                name: 'Google',
-                url: 'https://www.google.ca',
-              },
-              {
-                name: 'Facebook',
-                url: 'https://www.facebook.com',
-              },
-            ]
-          },
-          {
-            id: 1,
-            name: 'Test Event 2',
-            startTime: new Date('2016-03-05 9:00 AM EST'),
-            endTime: new Date('2016-03-05 11:00 AM EST'),
-            location: 'Physical Activites Complex (PAC)',
-            description: 'This event is cooler than the other test event!',
-          }
-        ],
+        isFetching: false,
+        events: [],
         selectedEvent: -1,
         selectedYear: today.getFullYear(),
         selectedMonth: today.getMonth(),
