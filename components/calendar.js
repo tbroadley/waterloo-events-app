@@ -137,9 +137,9 @@ class CalendarCell extends React.Component {
     } = this.props;
 
     const todayDate = new Date();
-    const today = date.getUTCFullYear() === todayDate.getUTCFullYear() &&
-                  date.getUTCMonth() === todayDate.getUTCMonth() &&
-                  date.getUTCDate() === todayDate.getUTCDate();
+    const today = date.getUTCFullYear() === todayDate.getFullYear() &&
+                  date.getUTCMonth() === todayDate.getMonth() &&
+                  date.getUTCDate() === todayDate.getDate();
 
     const className =
       (today ? 'today ' : '') +
