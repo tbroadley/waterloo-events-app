@@ -7,10 +7,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div id='app-parent'>
-        <div id='header'>
+        <nav>
           <a href='/'>Calendar</a>
           <a href='/contact.html'>Contact</a>
-        </div>
+        </nav>
         <div id='app'>
           <Calendar />
           <EventDetail />
