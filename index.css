@@ -36,8 +36,13 @@ nav {
   width: 100%;
 }
 
+#event-header {
+  display: flex;
+  align-items: center;
+}
+
 #event-detail button {
-  float: right;
+  margin-left: auto;
 }
 
 #calendar-parent {

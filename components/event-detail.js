@@ -27,13 +27,13 @@ class EventDetail extends React.Component {
 
       return (
         <div id='event-detail'>
-          <div>
+          <div id='event-header'>
+            <h1>{name}</h1>
             <button
               onClick={onDeselect}
             >
               Close
             </button>
-            <h1>{name}</h1>
           </div>
           {
             image !== undefined ?
