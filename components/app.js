@@ -8,8 +8,11 @@ export default class App extends React.Component {
     return (
       <div id='app-parent'>
         <nav>
-          <a href='/'>Calendar</a>
-          <a href='/contact.html'>Contact</a>
+          <div>
+            <a href='/'>Calendar</a>
+            &nbsp;
+            <a href='/contact.html'>Contact</a>
+          </div>
         </nav>
         <div id='app'>
           <Calendar />
