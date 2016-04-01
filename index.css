@@ -26,10 +26,6 @@ nav {
   overflow: scroll;
 }
 
-#event-detail.hidden {
-  display: none;
-}
-
 #calendar-parent {
   width: 75%;
 

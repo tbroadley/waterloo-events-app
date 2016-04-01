@@ -7,7 +7,9 @@ class EventDetail extends React.Component {
   render() {
     if (this.props.selectedEvent === undefined) {
       return (
-        <div id='event-detail' className='hidden' />
+        <div id='event-detail'>
+          <h1>No event selected</h1>
+        </div>
       );
     } else {
       const {
