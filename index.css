@@ -27,7 +27,7 @@ nav {
 #event-detail {
   width: 25%;
 
-  overflow: scroll;
+  overflow-y: scroll;
 
   border-left: 1px grey solid;
 }
