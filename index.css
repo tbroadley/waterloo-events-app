@@ -97,7 +97,7 @@ nav {
 }
 
 #calendar > div > div.today {
-  border: 5px red solid;
+  border: 2px red solid;
 }
 
 #calendar > div > div.notInMonth {
