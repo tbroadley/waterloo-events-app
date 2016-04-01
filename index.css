@@ -14,18 +14,15 @@ nav {
 
 #app {
   flex: 1 1 auto;
-
-  display: flex;
-  flex-flow: row;
 }
 
 #calendar-parent, #event-detail {
-  width: 50%;
-
   flex: 1 1 auto;
 }
 
 #event-detail {
+  width: 25%;
+
   overflow: scroll;
 }
 
@@ -34,6 +31,10 @@ nav {
 }
 
 #calendar-parent {
+  width: 75%;
+
+  float: left;
+
   display: flex;
   flex-flow: row;
 }
