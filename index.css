@@ -18,12 +18,18 @@ nav {
 
 #calendar-parent, #event-detail {
   flex: 1 1 auto;
+
+  box-sizing: border-box;
+
+  padding: 20px;
 }
 
 #event-detail {
   width: 25%;
 
   overflow: scroll;
+
+  border-left: 1px grey solid;
 }
 
 #event-detail img {
