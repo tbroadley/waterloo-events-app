@@ -27,12 +27,14 @@ class EventDetail extends React.Component {
 
       return (
         <div id='event-detail'>
-          <button
-            onClick={onDeselect}
-          >
-            Close
-          </button>
-          <div><h1>{name}</h1></div>
+          <div>
+            <button
+              onClick={onDeselect}
+            >
+              Close
+            </button>
+            <h1>{name}</h1>
+          </div>
           {
             image !== undefined ?
             <img src={'https://raw.githubusercontent.com/tbroadley/waterloo-events-list/master/posters/' + image} /> :
